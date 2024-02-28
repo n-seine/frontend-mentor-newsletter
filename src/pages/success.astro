@@ -1,0 +1,32 @@
+---
+import Layout from "../Layout.astro";
+---
+
+<Layout>
+  <div
+    class="px-4 h-screen lg:h-fit lg:w-fit lg:max-w-xl lg:p-16 justify-end font-sans text-dark-slate-grey flex flex-col items-center lg:gap-8"
+  >
+    <div class="h-full flex-grow w-full">
+      <img
+        src="/images/icon-success.svg"
+        alt=""
+        aria-hidden="true"
+        class="mt-36 lg:mt-0"
+      />
+      <h1 class="mt-8 text-5xl lg:text-6xl font-bold">
+        Thanks for subscribing!
+      </h1>
+      <p class="mt-8 lg:text-lg">
+        A confirmation email has been sent to <span class="font-bold"
+          >ash@loremcompany.com</span
+        >. Please open it and click the button inside to confirm your
+        subscription.
+      </p>
+    </div>
+    <a
+      href="/"
+      class="w-11/12 mb-4 lg:mb-0 lg:w-full text-center bg-dark-slate-grey hover:bg-gradient-to-r hover:shadow-tomato/40 hover:shadow-xl hover:from-tomato hover:from-50% hover:to-orange-500 text-white font-bold py-4 px-8 rounded-lg"
+      >Dismiss message</a
+    >
+  </div>
+</Layout>

@@ -1,0 +1,100 @@
+---
+const listItems = [
+  "Product discovery and building what matters",
+  "Measuring to ensure updates are a success",
+  "And much more!",
+];
+
+import Layout from "../Layout.astro";
+---
+
+<Layout>
+  <picture class="w-full lg:h-full lg:content-cover">
+    <source
+      srcset="images/illustration-sign-up-desktop.svg"
+      media="(min-width: 1024px)"
+    />
+    <img
+      class="w-full"
+      src="images/illustration-sign-up-mobile.svg"
+      alt="Illustration sign up"
+      height="280"
+      width="364"
+    />
+  </picture>
+  <div class="p-8 text-dark-slate-grey lg:w-full">
+    <h1 class="text-4xl font-bold lg:text-6xl">Stay updated!</h1>
+    <p class="mt-8 text-base lg:text-xl">
+      Join 60,000+ product managers receiving monthly updates on:
+    </p>
+    <ul class="my-8 text-base lg:text-lg space-y-3">
+      {
+        listItems.map((item) => (
+          <li class="flex justify-start items-baseline lg:items-center gap-4">
+            <img
+              src="images/icon-list.svg"
+              alt="Icon list"
+              class="relative top-0.5 lg:top-0"
+            />
+            <p>{item}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <form
+      action="/success"
+      method="post"
+      class="flex flex-col gap-3 my-8"
+      novalidate
+    >
+      <div class="flex w-full justify-between">
+        <label for="email" class="text-dark-slate-grey font-bold text-sm">
+          Email address
+        </label>
+        <span id="error-display" class="hidden text-tomato font-bold text-sm"
+          >Please enter a valid email</span
+        >
+      </div>
+      <input
+        class="py-4 px-4 focus:outline-none focus:border-charcoal-grey focus:placeholder:text-charcoal-grey rounded-lg border border-light-grey placeholder:text-sm lg:placeholder:text-base"
+        type="email"
+        name="email"
+        placeholder="email@company.com"
+        autocomplete="email"
+      />
+      <button
+        class="mt-2 bg-dark-slate-grey hover:bg-gradient-to-r hover:shadow-tomato/40 hover:shadow-xl hover:from-tomato hover:from-50% hover:to-orange-500 text-white font-bold py-4 px-8 w-full rounded-lg"
+        >Subscribe to monthly newsletter</button
+      >
+    </form>
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+    const input = form?.querySelector("input");
+    const error = form?.querySelector("span");
+
+    const resetStyle = () => {
+      input?.classList.remove("text-tomato", "bg-tomato/10");
+      input?.removeEventListener("focus", () => {
+        resetStyle();
+      });
+    };
+    form?.addEventListener("submit", (event) => {
+      if (!input?.checkValidity()) {
+        event.preventDefault();
+        error?.classList.remove("hidden");
+        input?.classList.add(
+          "text-tomato",
+          "bg-tomato/10",
+          "border-tomato",
+          "focus:border-tomato"
+        );
+        input?.addEventListener("focus", () => resetStyle());
+      } else {
+        //Do stuff
+        return Astro.redirect("/success");
+      }
+    });
+  </script>
+</Layout>

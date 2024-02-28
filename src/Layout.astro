@@ -1,0 +1,56 @@
+---
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Newsletter form - a Frontend mentor project</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <main
+      class="bg-charcoal-grey lg:h-screen lg:flex lg:justify-center lg:items-center"
+    >
+      <div
+        transition:animate="fade"
+        class="w-full lg:w-fit lg:max-w-5xl lg:flex flex-row-reverse bg-white lg:rounded-3xl lg:p-5 items-center lg:gap-8"
+      >
+        <slot />
+      </div>
+    </main>
+    <style is:global>
+      @font-face {
+        font-family: "Roboto";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src:
+          url(https://cdn.jsdelivr.net/fontsource/fonts/roboto@latest/latin-400-normal.woff2)
+            format("woff2"),
+          url(https://cdn.jsdelivr.net/fontsource/fonts/roboto@latest/latin-400-normal.woff)
+            format("woff");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      /* roboto-latin-700-normal */
+      @font-face {
+        font-family: "Roboto";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 700;
+        src:
+          url(https://cdn.jsdelivr.net/fontsource/fonts/roboto@latest/latin-700-normal.woff2)
+            format("woff2"),
+          url(https://cdn.jsdelivr.net/fontsource/fonts/roboto@latest/latin-700-normal.woff)
+            format("woff");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+  </body>
+</html>
