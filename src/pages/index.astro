@@ -43,7 +43,7 @@ import Layout from "../Layout.astro";
     </ul>
     <form
       action="/success"
-      method="get"
+      method="GET"
       class="flex flex-col gap-3 my-8"
       novalidate
     >
@@ -69,11 +69,24 @@ import Layout from "../Layout.astro";
     </form>
   </div>
 
-  <script>
+  <script data-astro-rerun="">
     const form = document.querySelector("form");
     const input = form?.querySelector("input");
     const error = form?.querySelector("span");
 
+    const handleSubmit = () => {
+      if (input?.checkValidity()) {
+        error?.classList.add("hidden");
+        input?.classList.remove(
+          "text-tomato",
+          "bg-tomato/10",
+          "border-tomato",
+          "focus:border-tomato"
+        );
+      } else {
+        console.log("valid");
+      }
+    };
     const resetStyle = () => {
       input?.classList.remove("text-tomato", "bg-tomato/10");
       input?.removeEventListener("focus", () => {
@@ -81,20 +94,7 @@ import Layout from "../Layout.astro";
       });
     };
     form?.addEventListener("submit", (event) => {
-      if (!input?.checkValidity()) {
-        event.preventDefault();
-        error?.classList.remove("hidden");
-        input?.classList.add(
-          "text-tomato",
-          "bg-tomato/10",
-          "border-tomato",
-          "focus:border-tomato"
-        );
-        input?.addEventListener("focus", () => resetStyle());
-      } else {
-        //Do stuff
-        return Astro.redirect("/success");
-      }
+      handleSubmit();
     });
   </script>
 </Layout>

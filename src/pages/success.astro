@@ -1,5 +1,7 @@
 ---
 import Layout from "../Layout.astro";
+const email = Astro.url.searchParams.get("email");
+console.log(email);
 ---
 
 <Layout>
@@ -18,7 +20,7 @@ import Layout from "../Layout.astro";
       </h1>
       <p class="mt-8 lg:text-lg">
         A confirmation email has been sent to <span class="font-bold"
-          >ash@loremcompany.com</span
+          >{email}</span
         >. Please open it and click the button inside to confirm your
         subscription.
       </p>
