@@ -7,14 +7,12 @@ import { ViewTransitions } from "astro:transitions";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Newsletter form - a Frontend mentor project</title>
-    <ViewTransitions />
   </head>
   <body>
     <main
       class="bg-charcoal-grey lg:h-screen lg:flex lg:justify-center lg:items-center"
     >
       <div
-        transition:animate="fade"
         class="w-full lg:w-fit lg:max-w-5xl lg:flex flex-row-reverse bg-white lg:rounded-3xl lg:p-5 items-center lg:gap-8"
       >
         <slot />
